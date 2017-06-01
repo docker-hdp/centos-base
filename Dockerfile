@@ -12,9 +12,6 @@ RUN yum install -y curl wget scp unzip tar sudo ntp
 # Configure NTP
 RUN chkconfig ntpd on && /etc/init.d/ntpd start
 
-# Disable IPTables
-RUN chkconfig iptables off && service iptables stop
-
 # Java Development Kit (JDK) 1.7.0_71 & Configuring Java Path Variables
 RUN curl -LO 'http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm' -H 'Cookie: oraclelicense=accept-securebackup-cookie' && rpm -i jdk-8u131-linux-x64.rpm && rm jdk-8u131-linux-x64.rpm
 ENV JAVA_HOME /usr/java/default
